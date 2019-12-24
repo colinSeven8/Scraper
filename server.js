@@ -40,11 +40,11 @@ app.get("/all", function(req, res) {
 // Scrape data from one site and place it into the mongodb db
 app.get("/scrape", function(req, res) {
   // Make a request via axios for the news section of `ycombinator`
-  axios.get("https://news.ycombinator.com/").then(function(response) {
+  axios.get("https://www.clickhole.com/").then(function(response) {
     // Load the html body from axios into cheerio
     let $ = cheerio.load(response.data);
     // For each element with a "title" class
-    $(".title").each(function(i, element) {
+    $(".long-headline").each(function(i, element) {
       // Save the text and href of each link enclosed in the current element
       let title = $(element).children("a").text();
       let link = $(element).children("a").attr("href");
@@ -74,6 +74,9 @@ app.get("/scrape", function(req, res) {
   res.send("Scrape Complete");
 });
 
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// mongoose.connect(MONGODB_URI);
 
 // Listen on port 3000
 app.listen(3000, function() {
