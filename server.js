@@ -9,6 +9,9 @@ const cheerio = require('cheerio');
 
 const db = require('./models');
 
+const apiRoputes = require("./routes/apiRoutes");
+const htmlRoutes = require("./routes/htmlRoutes");
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -19,21 +22,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// Connect to the Mongo DB
-// mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
-
-// If deployed, use the deployed database. Otherwise use the local headHolelines database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/headHoleLines";
-mongoose.connect(MONGODB_URI);
-
 // Set up Handlebars engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Dial up the homepage
-// app.get('/', (req, res) => {
-//   res.render('main');
-// });
+// If deployed, use the deployed database. Otherwise use the local headHolelines database
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/headHoleLines";
+mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+
+apiRoputes(app);
+htmlRoutes(app);
 
 // Retrieve data from the db
 app.get("/scrape", (req, res) => {
@@ -114,6 +112,4 @@ app.get("/deletesavedarticle/:id", function (req, res) {
 });
 
 // Start the server
-app.listen(PORT, function () {
-  console.log("App running on port " + PORT + "!");
-});
+app.listen(PORT, () => console.log("App running on port ${PORT}!"));
