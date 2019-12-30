@@ -1,5 +1,9 @@
+const Article = require('./article');
+const Note = require('./note');
+const SavedArticle = require('./savedArticle');
+
 module.exports = {
-    Article: require('./article'),
-    Note: require('./note'),
-    SavedArticle: require('./savedArticle')
+    Article: Article,
+    Note: Note,
+    SavedArticle: SavedArticle
 }

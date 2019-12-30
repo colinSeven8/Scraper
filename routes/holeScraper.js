@@ -1,53 +1,53 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const db = require('../models');
 
-function scrapeData() {
+module.exports = function (app) {
 
-    const articleURL = [];
-    const articleInfo = [];
-    const articlesPendingArr = [];
+    app.get("/", function (req, res) {
+        res.render('index');
+    });
 
-    // Making a request via axios for Clickhole's news page. The page's Response is passed as the promise argument.
-    axios.get("http://www.clickhole.com")
-        .then((response) => {
+    // Retrieve data from the db
+    app.get("/scrape", (req, res) => {
+
+        // Making a request via axios for Clickhole's news page. The page's Response is passed as our promise argument.
+        axios.get("https://www.clickhole.com").then(function (response) {
+            let scrapeData = [];
+
             const $ = cheerio.load(response.data);
-            $('article.js_post_item').each((i, element) => {
-                const url = $(element)
+            $("article.js_post_item").each(function (i, element) {
+
+                let result = {};
+
+                result.title = $(this)
+                    .find('h2')
+                    .text()
+                    .trim();
+                result.link = $(this)
                     .children()
                     .last()
                     .find('a')
                     .attr('href');
+                result.saved = false;
+                scrapeData.push(result);
+            });
+            // $("div.dv4r5q-3").each(function (i, element) {
+            //     result.image = $(this)
+            //         .children('img')
+            //         .attr('srcset')
+            //         .text();
+            //         scrapeData.push(result);
+            // });
 
-                articleURL.push(url);
-
-                let articlePending = axios.get(url);
-                // Push the next pending article up to the array containing all other articles
-                articlesPendingArr.push(articlePending);
-            })
-        })
-
-    // Wait for all promises to be resolved before moving forward
-    return Promise.all(articlesPendingArr)
-        .then((results) => {
-            let i = 0;
-            //console.log(results);
-            results.forEach((articleHtmlData) => {
-                const $ = cherrio.load(articleHtmlData.data);
-                let excerpt = $(div.js_expandable - container)
-                    .children()
-                    .first()
-                    .text();
-                articleInfo.push({
-                    url: articleURL[i],
-                    title: $('header').children('h1').text(),
-                    excerpt: excerpt,
-                    saved: false
+            db.Article.create(scrapeData)
+                .then(function (dbArticle) {
+                    console.log(dbArticle);
                 })
-                i++;
-            })
-            //scrapeData returns all the info for the article
-            return articleInfo;
-        })
-};
-
-module.exports = scrapeData;
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+        res.send("Scrape complete!");
+    });
+}

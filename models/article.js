@@ -20,10 +20,16 @@ let ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  // // `image` is required and of type String
+  // image: {
+  //   type: String,
+  //   required: true
+  // },
   // `saved` is required and of type Boolean
   saved: {
     type: Boolean,
-    default: false
+    default: false,
+    required: true
   },
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
