@@ -1,21 +1,26 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const db = require('../models');
+const db = require('../models/Index');
 
 module.exports = function (app) {
 
     app.get("/", function (req, res) {
-        res.render('index');
+        db.Article.find({})
+            .then((dbArticles) => {
+                let hbsObject = { articles: dbArticles }
+                res.render("index", hbsObject);
+            })
+            .catch(err => res.json(err))
     });
 
     // Retrieve data from the db
     app.get("/scrape", (req, res) => {
 
-        // Making a request via axios for Clickhole's news page. The page's Response is passed as our promise argument.
+        // Making a request via axios for Clickhole's news page
         axios.get("https://www.clickhole.com").then(function (response) {
-            let scrapeData = [];
-
             const $ = cheerio.load(response.data);
+            let articleCount = 0;
+
             $("article.js_post_item").each(function (i, element) {
 
                 let result = {};
@@ -23,31 +28,37 @@ module.exports = function (app) {
                 result.title = $(this)
                     .find('h2')
                     .text()
+                    .split(':')[0]
                     .trim();
                 result.link = $(this)
                     .children()
                     .last()
                     .find('a')
                     .attr('href');
-                result.saved = false;
-                scrapeData.push(result);
-            });
-            // $("div.dv4r5q-3").each(function (i, element) {
-            //     result.image = $(this)
-            //         .children('img')
-            //         .attr('srcset')
-            //         .text();
-            //         scrapeData.push(result);
-            // });
+                result.summary = $(this)
+                    .find('h2')
+                    .text()
+                    .split(':')[1];
 
-            db.Article.create(scrapeData)
-                .then(function (dbArticle) {
-                    console.log(dbArticle);
-                })
-                .catch(function (err) {
-                    console.log(err);
-                });
+                if (result) {
+                    db.Article.remove()
+                        .then(() => {
+                            db.Article.create(result)
+                                .then(dbArticle => articleCount++)
+                                .catch(err => console.log(err));
+                        })
+                }
+            })
+            res.status(200).send('Scraped!');
         });
-        res.send("Scrape complete!");
     });
+
+    app.get("/saved", function (req, res) {
+        db.savedArticle.find({})
+            .then(function (dbSavedArticles) {
+                let hbsObject = { savedArticles: dbSavedArticles }
+                res.render("savedarticles", hbsObject);
+            })
+            .catch(err => res.json(err));
+    })
 }
