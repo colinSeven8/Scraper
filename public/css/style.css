@@ -17,7 +17,7 @@
 }
 
 body {
-    background-color: #802626;
+    background-color: whitesmoke;
     color: white !important;
 }
 
@@ -30,12 +30,14 @@ h3 {
     font-style: italic;
 }
 
-nav .navbar-nav li a {
+.nav-link {
     color: #FF6F0F !important;
+    transition: 0.3s;
 }
 
-nav .navbar-brand {
-    color: #FF6F0F !important;
+.nav-link:hover {
+    color: rgb(238, 175, 133) !important;
+    opacity: 1;
 }
 
 .card {
@@ -55,12 +57,14 @@ nav .navbar-brand {
 a {
     text-decoration: none;
     vertical-align: middle;
-    color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #FF6F0F !important;
+    transition: 0.3s;
 }
 
 a:hover {
-    color: #FF6F0F;
+    color: rgb(238, 175, 133) !important;
+    opacity: 1;
     text-decoration: none;
 }
 
@@ -74,7 +78,7 @@ a:hover {
 }
 
 .btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
-    background-color: #802626 !important;
+    background-color: whitesmoke !important;
     transition: none !important;
 }
 
@@ -84,14 +88,20 @@ a:hover {
 }
 
 .btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
-    background-color: tomato !important;
+    background-color: #6B6365 !important;
 }
 
-.noteBtn, .deleteBtn {
+.noteBtn {
+    color: #161619 !important;
+    background-color: #A9B2CF;
     float: right;
-    margin-right: 3%;
-    /* width:49%;
-    font-size: 10px; */
+    margin-right: 10%;
+}
+
+.deleteBtn {
+    background-color:#6B6365;
+    float: right;
+    margin-right: 10%;
 }
 
 .modal-footer, .modal-body, .modal-header {

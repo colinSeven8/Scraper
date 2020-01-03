@@ -8,6 +8,19 @@ $("#scrapeBtn").on("click", function (event) {
   });
 });
 
+// $("#savedArticlePage").on("click", function () {
+//   let isOnHomePage = {
+//     onHomePage: false
+//   }
+
+//   $.ajax({
+//     method: "GET",
+//     url: "/saved",
+//     data: isOnHomePage
+//   })
+//   .then(function() { location.reload() })
+// });
+
 $("#clearArticlesBtn").on("click", function () {
   $.ajax({
     method: "GET",
@@ -43,8 +56,8 @@ $(".saveBtn").on("click", function () {
 $(".noteBtn").on("click", function () {
   $("#notesTitle").empty();
   $("#notesBody").empty();
-  const thisId = $(this).attr("data-id");
 
+  const thisId = $(this).attr("data-id");
   $("#saveNoteBtn").attr("data-id", thisId);
 
   $.ajax({
@@ -52,7 +65,7 @@ $(".noteBtn").on("click", function () {
     url: "/notes/" + thisId
   })
     .then(function (data) {
-      $("#notesTitle").append('Note for article: ' + data._id);
+      $("#notesTitle").append('Note for article: ' + data.title);
       $("#notesBody").append(data.note.noteBody);
     });
 });

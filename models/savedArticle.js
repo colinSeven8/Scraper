@@ -21,6 +21,12 @@ var savedArticledSchema = new Schema({
     type: String,
     required: true
   },
+  // `onHomePage` is required and of type Boolean
+  // onHomePage: {
+  //   type: Boolean,
+  //   default: true,
+  //   required: true
+  // },
   // `note` is an object that stores a Note id
   // The ref property links the ObjectId to the Note model
   // This allows us to populate the savedArticled with an associated Note
