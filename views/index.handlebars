@@ -1,15 +1,12 @@
  {{!-- Bring in the bottom half of the nav bar so we can add clear articles and clear saved articles buttons --}}
-  <button id = "scrapeBtn" class="btn btn-outline-info my-2 my-sm-0"  type="submit">Scrape New Articles</button>
+  <a id = "scrapeBtn" class="nav-link"  type="submit">Scrape New Articles</a>
   {{!-- data-toggle="modal" data-target="#scrapeModal" --}}
- <button id = "clearArticlesBtn" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Clear All Articles</button>
+ <a id = "clearArticlesBtn" class="nav-link" type="submit">Clear All Articles</a>
  </form>
         </li>
       </ul>
-
     </div>
   </nav>
-
-
 
 <div class="jumbotron">
     <div class="headersContainer">
@@ -20,7 +17,7 @@
 
   {{#each articles}}
 
-    <div class="card py-0" style="width: 100%">
+    <div class="card py-0">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-10">
@@ -32,7 +29,6 @@
             </div>
         </div>
         <div class="card-body">
-        
             <p class="card-text">{{summary}}</p>
         </div>
     </div>

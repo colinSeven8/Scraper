@@ -1,64 +1,90 @@
 .jumbotron {
-    background-image: url("../images/dnahelix.jpg");
+    height: 500px;
+    background-image: url("../images/background.png");
     background-size: cover;
-    text-align: center;
+    text-align: left;
+    border-radius: 0 !important;
+}
+
+.jumbotron h1 {
+    font-size: 90px;
 }
 
 .headersContainer {
-    background-color: rgb(51, 133, 166,0.75);
-    width: 55%;
+    background-color: transparent;
+    width: 70%;
     display: inline-block;
 }
 
 body {
-    background-color: #3385A6;
-    color: #A7E4F2 !important;
+    background-color: #802626;
+    color: white !important;
 }
 
 h1, h3 {
     width: 100%;
-    color: #A7E4F2;
+    color: #FF6F0F;
 }
 
-nav .navbar-nav li a{
-    color: #A7E4F2 !important;
-    }
+h3 {
+    font-style: italic;
+}
+
+nav .navbar-nav li a {
+    color: #FF6F0F !important;
+}
 
 nav .navbar-brand {
-    color: #A7E4F2 !important;
+    color: #FF6F0F !important;
 }
 
 .card {
     margin-bottom: 1.5%;
-    border-color:#A7E4F2;
+    border-color: #A7E4F2;
+    width: 100%;
 }
 
 .card-header {
-    background-color: #011826;
+    background-color: whitesmoke;
 }
 
 .card-body {
-    background-color: #024059;
+    background-color: #FF6F0F;
 }
 
-a { 
-    text-decoration:none;
+a {
+    text-decoration: none;
     vertical-align: middle;
-    color: #3385A6;
+    color: black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a:hover {
+    color: #FF6F0F;
+    text-decoration: none;
 }
 
 .btn {
     border-color: #A7E4F2 !important;
     color: #A7E4F2 !important;
 }
+
+.saveBtn {
+    color: #CCE2E6 !important;
+}
+
 .btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
-    background-color: #3385A6 !important;
+    background-color: #802626 !important;
     transition: none !important;
 }
 
 .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
-    background-color: #024059 !important;
+    background-color: #800000 !important;
     transition: none !important;
+}
+
+.btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
+    background-color: tomato !important;
 }
 
 .noteBtn, .deleteBtn {
@@ -68,8 +94,8 @@ a {
     font-size: 10px; */
 }
 
-.modal-footer,.modal-body, .modal-header {
-    background-color: #024059;
+.modal-footer, .modal-body, .modal-header {
+    background-color: #800000;
     text-align: center;
-    border-color:#A7E4F2;
+    border-color: #A7E4F2;
 }

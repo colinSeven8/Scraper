@@ -1,26 +1,21 @@
-
-{{!-- Bring in the bottom half of the nav bar so we can add clear articles and clear saved articles buttons --}}
-<button id = "clearSavedArticlesBtn" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Clear All Saved Articles</button>
+<a id = "clearSavedArticlesBtn" class="nav-link" type="submit">Clear All Saved Articles</a>
  </form>
         </li>
       </ul>
-
     </div>
   </nav>
 
 
 <div class="jumbotron">
     <div class="headersContainer">
-        <h1 class="display-4">Saved Articles</h1>
-        <h3>Your Saved Articles</h3>
+        <h1 class="display-4">Favorite Holes</h1>
+        <h3>Saved Articles</h3>
     </div>
 </div>
 
-
 {{#each savedArticles}}
 
-
-    <div class="card py-0" style="width: 100%">
+    <div class="card py-0">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-10">

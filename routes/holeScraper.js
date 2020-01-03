@@ -29,7 +29,8 @@ module.exports = function (app) {
                     .find('h2')
                     .text()
                     .split(':')[0]
-                    .trim();
+                    .trim()
+                    .toUpperCase();
                 result.link = $(this)
                     .children()
                     .last()
