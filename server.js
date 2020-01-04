@@ -32,8 +32,8 @@ app.set("view engine", "handlebars");
 var PORT = process.env.PORT || 3000;
 
 // If deployed, use the deployed database. Otherwise use the local headHolelines database
-const MONGODB_URI = process.env.PORT || "mongodb://localhost/headHoleLines";
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/headHoleLines";
+mongoose.connect(MONGODB_URI);
 
 // Call routes
 apiRoutes(app);
