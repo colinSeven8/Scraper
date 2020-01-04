@@ -31,12 +31,8 @@ app.set("view engine", "handlebars");
 
 var PORT = process.env.PORT || 3000;
 
-// If deployed, use the deployed database.  Otherwise use the local host
-
-// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scienceNews"
-
 // If deployed, use the deployed database. Otherwise use the local headHolelines database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/headHoleLines";
+const MONGODB_URI = process.env.PORT || "mongodb://localhost/headHoleLines";
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
 // Call routes
