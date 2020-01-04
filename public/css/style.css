@@ -32,7 +32,7 @@ h3 {
 
 .nav-link {
     color: #FF6F0F !important;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .nav-link:hover {
@@ -42,7 +42,7 @@ h3 {
 
 .card {
     margin-bottom: 1.5%;
-    border-color: #A7E4F2;
+    border-color: #FF6F0F;
     width: 100%;
 }
 
@@ -69,8 +69,8 @@ a:hover {
 }
 
 .btn {
-    border-color: #A7E4F2 !important;
-    color: #A7E4F2 !important;
+    border-color: #FF6F0F !important;
+    color: whitesmoke !important;
 }
 
 .saveBtn {
@@ -78,12 +78,12 @@ a:hover {
 }
 
 .btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited {
-    background-color: whitesmoke !important;
+    background-color: #FF6F0F !important;
     transition: none !important;
 }
 
 .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
-    background-color: #800000 !important;
+    background-color: #FF6F0F !important;
     transition: none !important;
 }
 
@@ -105,7 +105,7 @@ a:hover {
 }
 
 .modal-footer, .modal-body, .modal-header {
-    background-color: #800000;
+    background-color: rgb(165, 74, 13);
     text-align: center;
-    border-color: #A7E4F2;
+    border-color: #FF6F0F;
 }

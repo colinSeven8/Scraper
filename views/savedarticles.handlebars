@@ -5,7 +5,6 @@
     </div>
   </nav>
 
-
 <div class="jumbotron">
     <div class="headersContainer">
         <h1 class="display-4">Favorite Holes</h1>
@@ -14,12 +13,11 @@
 </div>
 
 {{#each savedArticles}}
-
     <div class="card py-0">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-10">
-                    <h5 class="card-title"><a href={{link}}>{{title}}</a></h5>
+                    <h5 class="card-title"><a href={{ link }}>{{ title }}</a></h5>
                 </div>
                 <div class="col-md-2">
                         <a href="#" class="deleteBtn btn" data-id={{_id}}>DELETE</a>
@@ -31,5 +29,4 @@
             <p class="card-text">{{summary}}</p>
         </div>
     </div>
-
     {{/each}}
