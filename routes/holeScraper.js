@@ -1,6 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
-const db = require('../models/Index');
+const db = require('../models');
 
 module.exports = function (app) {
 

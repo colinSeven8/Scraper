@@ -1,4 +1,4 @@
-const db = require('../models/Index');
+const db = require('../models');
 const scrapeData = require('./holeScraper');
 
 // Export the route
