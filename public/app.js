@@ -8,19 +8,6 @@ $("#scrapeBtn").on("click", function (event) {
   });
 });
 
-// $("#savedArticlePage").on("click", function () {
-//   let isOnHomePage = {
-//     onHomePage: false
-//   }
-
-//   $.ajax({
-//     method: "GET",
-//     url: "/saved",
-//     data: isOnHomePage
-//   })
-//   .then(function() { location.reload() })
-// });
-
 $("#clearArticlesBtn").on("click", function () {
   $.ajax({
     method: "GET",

@@ -37,4 +37,4 @@ Colin Reesor created this version of the Clickhole Scraper!
 ****
 ## Scrape the Hole!
 
-Click [here](https://headholelines.herokuapp.com/) tp try it out!
+Click [here](https://headholelines.herokuapp.com/) to try it out!
